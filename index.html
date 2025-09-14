@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-language Resume Ranking with Cleaning</title>
+</head>
+<body>
+    <h1>Resume Scoring & Ranking</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label>Job Description:</label><br>
+        <textarea name="job_description" rows="5" cols="60"></textarea><br><br>
+        <label>Upload Resumes (.docx or .pdf, multiple allowed):</label><br>
+        <input type="file" name="resumes" multiple><br><br>
+        <input type="submit" value="Rank Resumes">
+    </form>
+
+    {% if results %}
+        <h2>Ranked Resumes:</h2>
+        <ol>
+        {% for resume, score in results %}
+            <li>{{ resume }} - Score: {{ score|round(2) }}</li>
+        {% endfor %}
+        </ol>
+    {% endif %}
+</body>
+</html>
